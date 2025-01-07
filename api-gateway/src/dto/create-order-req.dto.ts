@@ -1,4 +1,4 @@
-export class CreateOrderReqDto {
+export class CreateOrderReq {
   userId: string;
   price: number;
 }

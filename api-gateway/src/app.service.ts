@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { CreateOrderReqDto } from './dto/create-order.dto';
+import { CreateOrderReq } from './dto/create-order-req.dto';
 import { ClientKafka } from '@nestjs/microservices';
 import { OrderCreatedEvent } from './events/order-created.event';
 
@@ -13,7 +13,7 @@ export class AppService {
   }
 
   // emit event for billing
-  createOrder({ userId, price }: CreateOrderReqDto) {
+  createOrder({ userId, price }: CreateOrderReq) {
     // save to db and emit event to billing service
     this.billingClient.emit(
       'order_created',
